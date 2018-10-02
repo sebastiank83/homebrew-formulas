@@ -5,9 +5,6 @@ osx_image: xcode9.2
 cache:
   directories:
     - /usr/local/Homebrew/Library/Homebrew/vendor/bundle
-branches:
-  only:
-    - master
 
 before_install:
   - sudo chown -R "$USER" "$(brew --repo)"
@@ -16,7 +13,9 @@ before_install:
   - mkdir -p "$HOMEBREW_TAP_DIR"
   - rm -rf "$HOMEBREW_TAP_DIR"
   - ln -s "$PWD" "$HOMEBREW_TAP_DIR"
+  - TAP_NAME="sebastiank83/formulas"
 
 script:
-  - brew install --HEAD sebastiank83/formulas/alacritty
-  - brew test --HEAD sebastiank83/formulas/alacritty
+  - brew install --HEAD ${TAP_NAME}/alacritty
+  - brew test --HEAD ${TAP_NAME}/alacritty
+

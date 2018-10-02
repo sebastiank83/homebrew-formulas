@@ -3,9 +3,9 @@ class Alacritty < Formula
   homepage "https://github.com/jwilm/alacritty"
   version ""
   sha256 ""
-  revision 0
+  revision 1
   head "https://github.com/jwilm/alacritty.git",
-    :revision => "7433f45ff9c6efeb48e223e90dd4aa9ee135b5e8",
+    :revision => "31362dd3b84993f493b3f5ab0fdb00646a636276",
     :using => :git
 
   depends_on "rustup-init" => :build
@@ -13,7 +13,7 @@ class Alacritty < Formula
   def install
     # Prepare
     system "rustup-init", "-y", "--no-modify-path"
-    ENV.append_path "PATH", buildpath/".brew_home/.cargo/bin"
+    ENV.append_path "PATH", "#{ENV["CARGO_HOME"]}/bin"
 
     # Build
     system "make", "app"
@@ -41,6 +41,6 @@ class Alacritty < Formula
     (prefix/"Alacritty.app/Contents/MacOS/alacritty").executable?
     (bin/"alacritty").symlink?
 
-    assert_equal "alacritty 0.1.0", `alacritty --version`.strip
+    assert_equal "alacritty 0.2.0", `alacritty --version`.strip
   end
 end
