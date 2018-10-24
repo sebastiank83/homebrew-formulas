@@ -16,6 +16,6 @@ before_install:
   - TAP_NAME="sebastiank83/formulas"
 
 script:
-  - brew install --HEAD ${TAP_NAME}/alacritty
+  - travis_wait 30 brew install --HEAD ${TAP_NAME}/alacritty
   - brew test --HEAD ${TAP_NAME}/alacritty
 
