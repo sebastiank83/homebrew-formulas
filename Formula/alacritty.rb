@@ -3,9 +3,9 @@ class Alacritty < Formula
   homepage "https://github.com/jwilm/alacritty"
   version ""
   sha256 ""
-  revision 2
-  head "https://github.com/mkeeler/alacritty.git",
-    :revision => "e2d6f9bdcea9e9db259958c54695f59a4ebe777e",
+  revision 3
+  head "https://github.com/jwilm/alacritty.git",
+    :revision => "f182afafe5c3e28205d2f45361d689b99f936955",
     :using => :git
 
   depends_on "rustup-init" => :build
@@ -41,6 +41,6 @@ class Alacritty < Formula
     (prefix/"Alacritty.app/Contents/MacOS/alacritty").executable?
     (bin/"alacritty").symlink?
 
-    assert_equal "alacritty 0.2.1", `alacritty --version`.strip
+    assert_equal "alacritty 0.2.2", `alacritty --version`.strip
   end
 end
